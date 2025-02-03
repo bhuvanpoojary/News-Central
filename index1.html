@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Delivery App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>News Delivery App</h1>
+        <input type="text" id="search" placeholder="Search for news...">
+        <button onclick="searchNews()">Search</button>
+    </header>
+    <nav id="categories">
+        <button onclick="fetchNewsByCategory('business')">Business</button>
+        <button onclick="fetchNewsByCategory('entertainment')">Entertainment</button>
+        <button onclick="fetchNewsByCategory('health')">Health</button>
+        <button onclick="fetchNewsByCategory('science')">Science</button>
+        <button onclick="fetchNewsByCategory('sports')">Sports</button>
+        <button onclick="fetchNewsByCategory('technology')">Technology</button>
+    </nav>
+    <main id="news"></main>
+    <script src="app.js"></script>
+</body>
+</html>
