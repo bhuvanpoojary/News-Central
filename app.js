@@ -1,7 +1,12 @@
 function fetchNews(query = '', category = '') {
     const url = `http://127.0.0.1:5000/news?query=${query}&category=${category}`;
     fetch(url)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             const newsContainer = document.getElementById('news');
             newsContainer.innerHTML = '';  // Clear previous results
@@ -30,6 +35,11 @@ function fetchNews(query = '', category = '') {
 
                 newsContainer.appendChild(articleDiv);
             });
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+            const newsContainer = document.getElementById('news');
+            newsContainer.innerHTML = '<p>Failed to fetch news. Please try again later.</p>';
         });
 }
 
